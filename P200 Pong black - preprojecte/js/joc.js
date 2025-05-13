@@ -4,6 +4,9 @@ class Joc{
         this.myCtx = myCtx;
         this.amplada = myCanvas.width;
         this.alcada = myCanvas.height;
+        this.pala1 = new pala (new punt (0,10),5,5);
+        this.pala2 = new pala (new punt (50,10),5,5);
+        this.bola = new bola (new punt(10,10), 5,5)
 
         //Elements del joc
         /********************************* 
