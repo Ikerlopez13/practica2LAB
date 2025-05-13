@@ -31,6 +31,11 @@ class Joc{
     inicialitza(){
 
         $(document).on("keydown",{joc:this}, function(e){
+
+             switch (this.key){
+                case 40: pressed = true;
+                case 38: pressed = true;
+            }
              /********************************* 
              * Tasca. Indetificar la tecla premuda si és alguna
              * de les definides com a tecla de moviment
@@ -39,6 +44,11 @@ class Joc{
            
         });
         $(document).on("keyup", {joc:this}, function(e){
+
+            switch (this.key){
+                case 40: pressed = false;
+                case 38: pressed = false;
+            }
             /********************************* 
              * Tasca. Indetificar la tecla que ja no està premuda,
              * si és alguna de les definides com a tecla de moviment
