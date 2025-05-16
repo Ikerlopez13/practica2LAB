@@ -12,21 +12,6 @@ class Bola extends Rectangle {
     }
 
     update(ampleCanva, altCanva, palaJugador, palaOrdinador){
-        if (this.puntPosicio == palaJugador.puntPosicio){
-
-        }
-        else if (this.puntPosicio == palaOrdinador.puntPosicio){
-
-        }
-
-        else if (this.puntposicio == ampleCanva){
-
-        }
-
-        else if(this.puntPosicio == altCanva){}
-
-
-        }
     /********************************* 
      * Tasca. Actualitzar la posició de la bola tenin en compte
      * Si xoca o no amb els marges del canvas
