@@ -31,14 +31,14 @@ class Bola extends Rectangle {
      * canviar el sentit en funció d'on ha xocat i sortir
      **********************************/  
 
-     let puntA = {
-        x: this.puntPosicio.x,
-        y: this.puntPosicio.y
+        let puntA = {
+            x: this.puntPosicio.x,
+            y: this.puntPosicio.y
         } 
 
-     let puntB = {
-        x: this.puntPosicio.x + this.velocitatx,
-        y: this.puntPosicio.y + this.velocitaty
+        let puntB = {
+            x: this.puntPosicio.x + this.velocitatx,
+            y: this.puntPosicio.y + this.velocitaty
         }
         
         let xoc = false; 
@@ -61,30 +61,28 @@ class Bola extends Rectangle {
                 switch (xocPala.vora) {
                     case "esquerra":
                     case "dreta":
-                this.velocitatx = -this.velocitatx;
-                break;
+                        this.velocitatx = -this.velocitatx;
+                        break;
 
                     case "superior":
                     case "inferior":
-                this.velocitaty = -this.velocitaty;
-                break;
+                        this.velocitaty = -this.velocitaty;
+                        break;
                 }
-                }  
+            }  
                  /********************************* 
                  * Tasca. Si xoca amb alguna pala 
                  * canviar el sentit en funció de si ha xocar
                 * a dreta, esquerra, a dalt o a baix de la pala 
                 * Poder heu de tenir en compte en quina pala s'ha produït el xoc
                 **********************************/ 
-                  xoc = true;
 
-                
-    
+            xoc = true;
             if(!xoc){
-            //Si no hi ha xoc és mou on pertoca
-            this.puntPosicio.x = segmentTrajectoria.puntB.x;
-            this.puntPosicio.y = segmentTrajectoria.puntB.y;
-         }
+                //Si no hi ha xoc és mou on pertoca
+                this.puntPosicio.x = segmentTrajectoria.puntB.x;
+                this.puntPosicio.y = segmentTrajectoria.puntB.y;
+            }
     
     }
     /********************************* 
@@ -97,17 +95,17 @@ class Bola extends Rectangle {
      * El el cas dels laterals caldrà assignar puntuació i reiniciar un nou joc
     **********************************/        
         
-        revisaXocTop(segmentTrajectoria){
-            if(segmentTrajectoria.puntB.y <0){
-                let exces = (segmentTrajectoria.puntB.y)/this.velocitaty;
-                this.puntPosicio.x = segmentTrajectoria.puntB.x - exces*this.velocitatx;
-                this.puntPosicio.y = 0;
-                this.velocitaty = -this.velocitaty;
-                return true;
-            }
+    revisaXocTop(segmentTrajectoria){
+        if(segmentTrajectoria.puntB.y <0){
+            let exces = (segmentTrajectoria.puntB.y)/this.velocitaty;
+            this.puntPosicio.x = segmentTrajectoria.puntB.x - exces*this.velocitatx;
+            this.puntPosicio.y = 0;
+            this.velocitaty = -this.velocitaty;
+            return true;
         }
+    }
 
-        revisaXocDreta(segmentTrajectoria, ampleCanva, altCanva){
+    revisaXocDreta(segmentTrajectoria, ampleCanva, altCanva){
         if(segmentTrajectoria.puntB.x > ampleCanva){
             let exces = (segmentTrajectoria.puntB.x - ampleCanva)/this.velocitatx;
             this.puntPosicio.x = ampleCanva;
@@ -117,19 +115,19 @@ class Bola extends Rectangle {
             this.puntPosicio.y = altCanva / 2;
             return true;
             }
-        }
+    }
 
-        revisaXocInferior(segmentTrajectoria, altCanva){
-            if(segmentTrajectoria.puntB.y > altCanva){
-                let exces = (segmentTrajectoria.puntB.y)/this.velocitaty;
-                this.puntPosicio.x = segmentTrajectoria.puntB.x - exces*this.velocitatx;
-                this.puntPosicio.y = altCanva;
-                this.velocitaty = -this.velocitaty;
-                return true;
-            }
+    revisaXocInferior(segmentTrajectoria, altCanva){
+        if(segmentTrajectoria.puntB.y > altCanva){
+            let exces = (segmentTrajectoria.puntB.y)/this.velocitaty;
+            this.puntPosicio.x = segmentTrajectoria.puntB.x - exces*this.velocitatx;
+            this.puntPosicio.y = altCanva;
+            this.velocitaty = -this.velocitaty;
+            return true;
         }
+    }
 
-        revisaXocEsquerra(segmentTrajectoria, altCanva, ampleCanva){
+    revisaXocEsquerra(segmentTrajectoria, altCanva, ampleCanva){
         if(segmentTrajectoria.puntB.x < 0){
             let exces = -segmentTrajectoria.puntB.x/this.velocitatx;
             this.puntPosicio.x = 0;
@@ -138,8 +136,8 @@ class Bola extends Rectangle {
             this.puntPosicio.x = ampleCanva / 2; 
             this.puntPosicio.y = altCanva / 2;
             return true;
-         }
         }
+    }
        
         
       
@@ -174,4 +172,3 @@ class Bola extends Rectangle {
     } 
 
 }
-
