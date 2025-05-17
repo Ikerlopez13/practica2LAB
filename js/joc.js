@@ -11,8 +11,8 @@ class Joc{
          * Pales, bola, etc
         **********************************/
 
-        this.pala1 = new Pala (new Punt (30,this.alcada/2-20),10,40,'#FFFF');
-        this.pala2 = new Pala (new Punt (this.amplada-40, this.alcada/2-20),10,40,'#FFFF' );
+        this.pala1 = new Pala (new Punt (30,this.alcada/2-20),10,40,'#000080');
+        this.pala2 = new Pala (new Punt (this.amplada-40, this.alcada/2-20),10,40,'#FF0000' );
         this.bola = new Bola (new Punt(this.amplada/2,this.alcada/2), 5,5,'#FFFF' );
        
 
@@ -77,7 +77,8 @@ class Joc{
          * Tasca. Dibuixar inicialment els elements del joc
          * al canva: Pales, bola, etc
         **********************************/
-        this.draw();
+         this.draw();
+
            //Màtode de crida recursiva per generar l'animació dels objectes
          requestAnimationFrame(animacio);
     }
@@ -96,7 +97,7 @@ class Joc{
     }
 
     draw(){
-        
+        this.clearCanvas();
         
         /********************************* 
          * Tasca. Dibuixar els elements del joc
