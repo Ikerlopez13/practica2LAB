@@ -11,8 +11,8 @@ class Joc{
          * Pales, bola, etc
         **********************************/
 
-        this.pala1 = new Pala (new Punt (30,this.alcada/2-20),10,40,'#000080');
-        this.pala2 = new Pala (new Punt (this.amplada-40, this.alcada/2-20),10,40,'#FF0000' );
+        this.pala1 = new Pala (new Punt (30,this.alcada/2-20),10,40,'#FFFF');
+        this.pala2 = new Pala (new Punt (this.amplada-40, this.alcada/2-20),10,40,'#FFFF' );
         this.bola = new Bola (new Punt(this.amplada/2,this.alcada/2), 5,5,'#FFFF' );
        
 
@@ -27,8 +27,8 @@ class Joc{
         }
     }
         set velocitat(velocitatJoc){
-        this.velocitatJoc = velocitatJoc;
-    }
+            this.velocitatJoc = velocitatJoc;
+        }
 
     inicialitza(){
 
@@ -39,6 +39,16 @@ class Joc{
              * de les definides com a tecla de moviment
              * Actualitzar la propietat pressed a true 
             **********************************/
+            switch(e.which){
+                case 39:
+                    this.key.RIGHT.pressed=true;break;
+                case 37:
+                    this.key.LEFT.pressed=true;break;
+                case 40:
+                    this.key.DOWN.pressed=true;break;
+                case 38:
+                    this.key.UP.pressed=true;break;
+            }
            
         });
         $(document).on("keyup", {joc:this}, function(e){
@@ -48,6 +58,16 @@ class Joc{
              * si és alguna de les definides com a tecla de moviment
              * Actualitzar la propietat pressed a false
             **********************************/
+            switch(e.which){
+                case 39:
+                    this.key.RIGHT.pressed=false;break;
+                case 37:
+                    this.key.LEFT.pressed=false;break;
+                case 40:
+                    this.key.DOWN.pressed=false;break;
+                case 38:
+                    this.key.UP.pressed=false;break;
+            }
 
             
             
@@ -58,7 +78,6 @@ class Joc{
          * al canva: Pales, bola, etc
         **********************************/
         this.draw();
-
            //Màtode de crida recursiva per generar l'animació dels objectes
          requestAnimationFrame(animacio);
     }
@@ -69,12 +88,15 @@ class Joc{
          * Tasca. Actualitzar les posicions 
          * dels elements del joc
          * al canva: Pales, bola, etc
-        **********************************/      
+        **********************************/ 
+        this.bola.update(this.amplada, this.alcada, this.pala1, this.pala2);
+        this.pala2.updateAuto(this.alcada);
+        this.pala1.update(this.key, this.alcada);
         this.draw();
     }
 
     draw(){
-        this.clearCanvas();
+        
         
         /********************************* 
          * Tasca. Dibuixar els elements del joc
