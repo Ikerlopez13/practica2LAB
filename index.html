@@ -5,25 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+    <title>BRING PONG</title>
 </head>
 <body>
+
     <div id="container">
         <div id="menu">
+            <p>Brig Pong </p>
+            <p>Press Any Key to Start</p>
+            <p><input type="button" value="JUGAR" id="jugar"/></p>
+            <div class="form-grid">
+                <p style = color:azure>Nom: <input id="nom" type="text"></p>
+                <p style = color:azure>Puntuació: <input id="punts" type="number" min="2" max="10" placeholder="2-10"></p>
+              </div>
+            </div>
             <!--Nom jugador, Configuració del joc, rànquing de records-->>    
         </div> 
-        <div id="joc">
+        <div id="mjoc" style= display:none;>
             <div id="display">
                 <h1 class="title">Joc del Pong</h1>
                 <div class="score" id="score-jugador1">0</div>
                 <div class="score" id="score-jugador2">0</div>   
             </div>  
             <div id="divjoc">
-                <canvas id="joc" class="canvatable">
-
-                </canvas>    
+                <canvas id="joc" class="canvatable"></canvas>    
             </div>    
         </div>
+            
     </div>
 </body>
 
@@ -35,5 +43,6 @@
 <script src="js/bola.js"></script>
 <script src="js/joc.js"></script>
 <script src="js/app.js"></script>
+<script src="js/display.js"></script>
 
 </html>
