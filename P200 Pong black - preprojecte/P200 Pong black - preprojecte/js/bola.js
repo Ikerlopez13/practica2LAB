@@ -30,27 +30,26 @@ class Bola extends Rectangle {
      * a dreta, esquerra, a dalt o a baix de la pala
      * canviar el sentit en funció d'on ha xocat i sortir
      **********************************/  
+     let xocPala = false;
 
-     let puntA = {
-        x: this.puntPosicio.x,
-        y: this.puntPosicio.y
-        } 
+     this.puntA = new Punt(this.puntPosicio.x, this.puntPosicio.y)
 
-     let puntB = {
-        x: this.puntPosicio.x + this.velocitatx,
-        y: this.puntPosicio.y + this.velocitaty
-        }
+     this.puntB = new Punt (this.puntPosicio.x + this.velocitatx, this.puntPosicio.y + this.velocitaty);
         
         let xoc = false; 
         let segmentTrajectoria = new Segment(this.puntA, this.puntB);
      /********************************* 
      * Tasca. Revisar si xoca amb tots els marges del canva 
      **********************************/ 
-        xoc = this.revisaXocTop(segmentTrajectoria) || this.revisaXocDreta(segmentTrajectoria) || this.revisaXocEsquerra(segmentTrajectoria) ||
-            this.revisaXocInferior(segmentTrajectoria);
+        xoc = this.revisaXocTop(segmentTrajectoria) || 
+            this.revisaXocDreta(segmentTrajectoria, ampleCanva, altCanva) || 
+            this.revisaXocEsquerra(segmentTrajectoria, ampleCanva, altCanva) ||
+            this.revisaXocInferior(segmentTrajectoria, altCanva);
+            
 
-        if(!xoc){
+        if(!xoc){ 
             xocPala = this.revisaXocPales(segmentTrajectoria, palaJugador, palaOrdinador);
+            
         }
             
               /********************************* 
@@ -82,7 +81,7 @@ class Bola extends Rectangle {
     
             if(!xoc){
             //Si no hi ha xoc és mou on pertoca
-            this.puntPosicio.x = segmentTrajectoria.puntB.x;
+           this.puntPosicio.x = segmentTrajectoria.puntB.x;
             this.puntPosicio.y = segmentTrajectoria.puntB.y;
          }
     
@@ -98,13 +97,14 @@ class Bola extends Rectangle {
     **********************************/        
         
         revisaXocTop(segmentTrajectoria){
-            if(segmentTrajectoria.puntB.y <0){
+            if(segmentTrajectoria.puntB.y <=0){
                 let exces = (segmentTrajectoria.puntB.y)/this.velocitaty;
                 this.puntPosicio.x = segmentTrajectoria.puntB.x - exces*this.velocitatx;
                 this.puntPosicio.y = 0;
                 this.velocitaty = -this.velocitaty;
                 return true;
             }
+            return false;
         }
 
         revisaXocDreta(segmentTrajectoria, ampleCanva, altCanva){
@@ -117,6 +117,7 @@ class Bola extends Rectangle {
             this.puntPosicio.y = altCanva / 2;
             return true;
             }
+            return false;
         }
 
         revisaXocInferior(segmentTrajectoria, altCanva){
@@ -127,6 +128,7 @@ class Bola extends Rectangle {
                 this.velocitaty = -this.velocitaty;
                 return true;
             }
+            return false;
         }
 
         revisaXocEsquerra(segmentTrajectoria, altCanva, ampleCanva){
@@ -139,6 +141,7 @@ class Bola extends Rectangle {
             this.puntPosicio.y = altCanva / 2;
             return true;
          }
+         return false;
         }
        
         
@@ -174,5 +177,4 @@ class Bola extends Rectangle {
     } 
 
 }
-
 
