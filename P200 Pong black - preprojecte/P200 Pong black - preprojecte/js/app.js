@@ -24,6 +24,7 @@ $(function(){
 
 function animacio(){
     joc.update();
+    
     //Oportunitat per actualitzar les puntuacions
     //revisar si seguim jugant o no
     //Si pujem de nivell, etc
