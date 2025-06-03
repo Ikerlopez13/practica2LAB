@@ -10,7 +10,12 @@ class Display {
 
     checkGameOver(puntsJugador1, puntsJugador2, puntsObjectiu, nomJugador) {
         if (puntsJugador1 >= puntsObjectiu || puntsJugador2 >= puntsObjectiu) {
-            let guanyador = puntsJugador1 >= puntsObjectiu ? nomJugador : "Màquina";
+             let guanyador;
+            if (puntsJugador1 >= puntsObjectiu) {
+                guanyador = nomJugador;
+            } else {
+             guanyador = "Màquina";
+            }
             let punts = Math.max(puntsJugador1, puntsJugador2);
             saveScore(guanyador, punts);
             showHighScores();
